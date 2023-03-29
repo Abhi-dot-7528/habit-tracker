@@ -2,6 +2,7 @@ import requests
 
 USERNAME = "enzo"
 TOKEN = "us8heq#9wjd30_3h2!H*"
+GRAPH_ID = "graph0"
 
 pixela_url = "https://pixe.la/v1/users"
 user_params = {
@@ -15,7 +16,7 @@ user_params = {
 # print(post_response.text)
 
 graph_config = {
-    "id": "graph0",
+    "id": GRAPH_ID,
     "name": "Go To Sleep Graph",
     "unit": "Hours",
     "type": "float",
@@ -25,5 +26,13 @@ header = {
     "X-USER-TOKEN": TOKEN
 }
 graph_post = f"{pixela_url}/{USERNAME}/graphs"
-response = requests.post(url=graph_post, json=graph_config, headers=header)
+# response = requests.post(url=graph_post, json=graph_config, headers=header)
+# print(response.text)
+
+pixel_config = {
+    "date": "20230329",
+    "quantity": "6.0"
+}
+pixel_post = f"{pixela_url}/{USERNAME}/graphs/{GRAPH_ID}"
+response = requests.post(url=pixel_post, json=pixel_config, headers=header)
 print(response.text)
