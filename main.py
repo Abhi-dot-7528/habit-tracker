@@ -1,4 +1,5 @@
 import requests
+from datetime import datetime
 
 USERNAME = "enzo"
 TOKEN = "us8heq#9wjd30_3h2!H*"
@@ -29,8 +30,10 @@ graph_post = f"{pixela_url}/{USERNAME}/graphs"
 # response = requests.post(url=graph_post, json=graph_config, headers=header)
 # print(response.text)
 
+today = datetime.now()
+
 pixel_config = {
-    "date": "20230329",
+    "date": today.strftime("%Y%m%d"),
     "quantity": "6.0"
 }
 pixel_post = f"{pixela_url}/{USERNAME}/graphs/{GRAPH_ID}"
